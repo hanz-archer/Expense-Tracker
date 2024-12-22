@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Button, Input, Select, SelectItem } from "@shadcn/ui"
+import { Button, Input } from "@shadcn/ui"; 
 import { FaPlus } from 'react-icons/fa'
 import { ExpenseList } from './ExpenseList'
 import { Expense } from '../types'
@@ -47,8 +47,39 @@ const ExpenseTracker = () => {
 
 
   return (
-    <div>ExpenseTracker</div>
-  )
-}
+    <div className='p-6'>
+      <h1 className='text-2xl font-bold mb-4'>Expense Tracker</h1>
+      <div className='flex space-x-4' mb-6>
+
+        <Input type='number'
+        placeholder='Amount'
+        value={amount}
+        onchange={(e) => setAmount(Number(e.target.value))}
+        />
+        <Input type='text'
+        placeholder='Category'
+        value={category}
+        onchange={(e) => setCategory(e.target.value)}
+        />
+        <Input type='text'
+        placeholder='Description'
+        value={description}
+        onchange={(e) => setDescription(e.target.value)}
+        />
+        <Button onClick={handleAddExpense}>
+        <FaPlus />
+        </Button>
+      </div>
+
+      <div className='mb-6'>
+        <p>Total for today: ${getTotal("day")}</p>
+        <p>Total for this month: ${getTotal("month")}</p>
+        <p>Totoal for this year: ${getTotal("year")}</p>
+      </div>
+
+      <ExpenseList expenses={expenses} />
+    </div>
+    );
+};
 
 export default ExpenseTracker
