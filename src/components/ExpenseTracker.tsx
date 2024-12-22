@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import { Button, Input } from "@shadcn/ui"; 
 import { FaPlus } from 'react-icons/fa'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { ExpenseList } from './ExpenseList'
 import { Expense } from '../types'
 import { formatDate } from "../utils/formatDate";
@@ -54,17 +55,17 @@ const ExpenseTracker = () => {
         <Input type='number'
         placeholder='Amount'
         value={amount}
-        onchange={(e) => setAmount(Number(e.target.value))}
+        onChange={(e) => setAmount(Number(e.target.value))}
         />
         <Input type='text'
         placeholder='Category'
         value={category}
-        onchange={(e) => setCategory(e.target.value)}
+        onChange={(e) => setCategory(e.target.value)}
         />
         <Input type='text'
         placeholder='Description'
         value={description}
-        onchange={(e) => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
         />
         <Button onClick={handleAddExpense}>
         <FaPlus />
